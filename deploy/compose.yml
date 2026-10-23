@@ -1,5 +1,5 @@
 # One stack per environment, e.g.:
-#   APP_ENV=staging APP_PORT=3301 docker compose -f compose.yml -p medixa-staging up -d
+#   APP_ENV=staging APP_PORT=3311 docker compose -f compose.yml -p medixa-staging up -d
 # Secrets (POSTGRES_PASSWORD, SECRET_KEY, DEMO_PASSWORD) come from the deploy job's env.
 services:
   db:

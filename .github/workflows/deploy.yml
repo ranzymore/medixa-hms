@@ -67,7 +67,7 @@ jobs:
       name: ${{ github.ref_name == 'main' && 'production' || 'staging' }}
       url: https://${{ github.ref_name == 'main' && 'hpos' || 'hpos-staging' }}.wavesoms.com
     env:
-      APP_PORT: ${{ github.ref_name == 'main' && '3300' || '3301' }}
+      APP_PORT: ${{ github.ref_name == 'main' && '3310' || '3311' }}
       DIR: /home/github/medixa/${{ github.ref_name == 'main' && 'prod' || 'staging' }}
     steps:
       - uses: actions/checkout@v4

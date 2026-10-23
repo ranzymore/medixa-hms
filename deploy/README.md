@@ -6,8 +6,8 @@ runs `docker compose -p medixa-<env>` → host nginx + certbot terminate TLS.
 
 | Branch    | Stack            | Host port      | URL                                  | GitHub environment |
 |-----------|------------------|----------------|--------------------------------------|--------------------|
-| `staging` | `medixa-staging` | 127.0.0.1:3301 | https://hpos-staging.wavesoms.com  | `staging`          |
-| `main`    | `medixa-prod`    | 127.0.0.1:3300 | https://hpos.wavesoms.com          | `production`       |
+| `staging` | `medixa-staging` | 127.0.0.1:3311 | https://hpos-staging.wavesoms.com  | `staging`          |
+| `main`    | `medixa-prod`    | 127.0.0.1:3310 | https://hpos.wavesoms.com          | `production`       |
 
 Each stack = `medixa-app-<env>` (Next.js standalone) + `medixa-db-<env>` (Postgres 17, own volume).
 Stack files live in `/home/github/medixa/<env>/` (written by the workflow, incl. a `0600` `.env`).
