@@ -17,7 +17,8 @@ services:
       - ./initdb:/docker-entrypoint-initdb.d:ro
       - ./migrations:/migrations:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U medixa -d hms"]
+      # TCP, not the socket: during first-boot init Postgres runs socket-only, then restarts.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U medixa -d hms"]
       interval: 5s
       timeout: 5s
       retries: 10
