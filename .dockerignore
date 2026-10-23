@@ -1,0 +1,15 @@
+.git
+.github
+.next
+node_modules
+.env*
+docs
+pitch
+product_pitch
+gtm
+audit
+db
+deploy
+coverage
+*.md
+tsconfig.tsbuildinfo

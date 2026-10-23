@@ -153,4 +153,6 @@ That regenerates the 8 files under [`database/snapshot/`](../database/snapshot/)
 
 ## First-time login data
 
+Fastest local setup: `scripts/db-reset-local.sh` drops the local `public` schema, restores the newest `db/dump/*.sql` (Supabase schema + demo data), and resets every doctor/staff password to `password123`. It refuses to run unless `DATABASE_URL` points at localhost.
+
 The seeded `doctor` and `staff` rows use codes like `DOC001`–`DOC005` and `STF001`–`STF007`. Some have plaintext `password123`; others have scrypt-hashed passwords. The lookup endpoint is `GET /api/login/<userCode>`; the credential check is `POST /api/login`. Successful plaintext logins auto-upgrade to scrypt on the same request.
