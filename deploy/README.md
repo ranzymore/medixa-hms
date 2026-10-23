@@ -6,8 +6,8 @@ runs `docker compose -p medixa-<env>` → host nginx + certbot terminate TLS.
 
 | Branch    | Stack            | Host port      | URL                                  | GitHub environment |
 |-----------|------------------|----------------|--------------------------------------|--------------------|
-| `staging` | `medixa-staging` | 127.0.0.1:3301 | https://medixa-staging.wavesoms.com  | `staging`          |
-| `main`    | `medixa-prod`    | 127.0.0.1:3300 | https://medixa.wavesoms.com          | `production`       |
+| `staging` | `medixa-staging` | 127.0.0.1:3301 | https://hpos-staging.wavesoms.com  | `staging`          |
+| `main`    | `medixa-prod`    | 127.0.0.1:3300 | https://hpos.wavesoms.com          | `production`       |
 
 Each stack = `medixa-app-<env>` (Next.js standalone) + `medixa-db-<env>` (Postgres 17, own volume).
 Stack files live in `/home/github/medixa/<env>/` (written by the workflow, incl. a `0600` `.env`).
@@ -34,7 +34,7 @@ Migrations are not rolled back automatically; apply the `.down.sql` by hand if n
    - `POSTGRES_PASSWORD`
    - `SECRET_KEY` (JWT signing secret)
    - `DEMO_PASSWORD` (login password for all seeded accounts)
-4. **DNS** (Namecheap, `wavesoms.com`): A records `medixa` and `medixa-staging` → `212.28.176.183`.
+4. **DNS** (Namecheap, `wavesoms.com`): A records `hpos` and `hpos-staging` → `212.28.176.183`.
 5. **Runner** (on the VPS, as `github`): repo Settings → Actions → Runners → New self-hosted runner, then
    ```sh
    mkdir ~/actions-runner-medixa && cd ~/actions-runner-medixa
@@ -48,7 +48,7 @@ Migrations are not rolled back automatically; apply the `.down.sql` by hand if n
    cp deploy/nginx/medixa.conf /etc/nginx/sites-available/medixa
    ln -s /etc/nginx/sites-available/medixa /etc/nginx/sites-enabled/medixa
    nginx -t && systemctl reload nginx
-   certbot --nginx -d medixa.wavesoms.com -d medixa-staging.wavesoms.com
+   certbot --nginx -d hpos.wavesoms.com -d hpos-staging.wavesoms.com
    ```
 7. Push to `staging`, check the site, then merge `staging` → `main`.
 
